@@ -20,8 +20,9 @@ layout: page
                 const prediction = json['data'][0]['confidences'][0];
                 const label = prediction['label'];
                 const confidence = prediction['confidence'];
+                const conf = confidence.toLocaleString(undefined,{style: 'percent', minimumFractionDigits:2});
                 const div = document.createElement('div');
-                div.innerHTML = `<img class="prediction" src="${reader.result}" width="300"> <p>${label} ${confidence}</p>`
+                div.innerHTML = `<img class="prediction" src="${reader.result}" width="300"> <p>${label} ${conf}</p>`
                 results.append(div);
                 return resolve(prediction)
             }
