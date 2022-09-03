@@ -5,4 +5,4 @@ layout: page
 
 # Simple JS Image Classifiers
 
--Classify the image of a state in the US.
+Provide the image of the flag of a US state or territory. The classifier identifies the state along with a confidence score.
