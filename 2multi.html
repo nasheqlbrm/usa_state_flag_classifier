@@ -11,9 +11,13 @@ layout: page
       headers: { "Content-Type": "application/json" }
     });
     const json = await response.json();
-    const label = json['data'][0]['confidences'][0]['label'];
+    const prediction = json['data'][0]['confidences'][0];
+    const label = prediction['label'];
+    const confidence = prediction['confidence'];
+    const conf = confidence.toLocaleString(undefined,{style: 'percent', minimumFractionDigits:2});
+
     const div = document.createElement('div');
-    div.innerHTML = `<br/><img src="${reader.result}" width="300"> <p>${label}</p>`
+    div.innerHTML = `<br/><img src="${reader.result}" width="300"> <p>${label} ${conf}</p>`
     document.body.append(div);
   }
   function read(file) {
